@@ -109,10 +109,3 @@ class ReportGenerator():
             'scholarship_number': today.month - 2
         })
         self._report_template.save(self._new_report_path)
-                
-generator = ReportGenerator()
-generator.set_activities_table_path("../Atividades/Atividades Estágio Março_Abril.xlsx")
-generator.set_report_template_path("../relatorio_template.docx")
-generator.set_new_report_path("../novo_relatorio.docx")
-
-generator.generate_report()
