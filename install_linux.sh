@@ -1,8 +1,9 @@
 if [ ! -d .venv ]; then
     python -m venv .venv
-    . ./.venv/bin/activate
-    pip install -r requirements.txt
 fi
+
+. ./.venv/bin/activate
+pip install -r requirements.txt
 
 echo "#!/bin/sh
 . ./.venv/bin/activate
