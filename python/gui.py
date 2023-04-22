@@ -1,6 +1,6 @@
-from tkinter import *
-from tkinter import filedialog
-from tkinter.ttk import *
+from tkinter import Tk, Frame, Label, Entry, filedialog
+from tkinter import Button as tkButton
+from button import Button
 from oop_report_generator import ReportGenerator
 
 class GUI(Tk):
@@ -12,13 +12,13 @@ class GUI(Tk):
         
         super().__init__()
         self.title("Gerador de Relatórios")
-        self._mf = Frame(self, padding=10)
+        self._mf = Frame(self, padx=10, pady=10, background="#fff")
         self._mf.pack()
         
         self._label1 = Label(self._mf, text="Arquivo de Atividades: \t")
         self._label1.grid(column=1, row=1)
         
-        self._button1 = Button(self._mf, text="Abrir arquivo de Atividades", command=self.get_activities_file_name)
+        self._button1 = tkButton(self._mf, text="Abrir arquivo de Atividades", command=self.get_activities_file_name)
         self._button1.grid(column=3, row=1)
         
         Label(self._mf).grid(row=2)
@@ -26,15 +26,14 @@ class GUI(Tk):
         self._label2 = Label(self._mf, text="Abrir arquivo template de relatório: \t")
         self._label2.grid(column=1, row=3)
         
-        self._button2 = Button(self._mf, text="Abrir arquivo template de relatório", command=self.get_template_file_name)
-        self._button2.grid(column=3, row=3)
+        self._button2 = Button(self._mf, 3, 3, text="Abrir arquivo template de relatório", command=self.get_template_file_name)
         
         Label(self._mf).grid(row=4)
         
         self._label3 = Label(self._mf, text="Diretório de destino: \t")
         self._label3.grid(column=1, row=5)
         
-        self._button3 = Button(self._mf, text="Abrir diretório de destino", command=self.get_output_dir)
+        self._button3 = tkButton(self._mf, text="Abrir diretório de destino", command=self.get_output_dir)
         self._button3.grid(column=3, row=5)
         
         Label(self._mf).grid(row=6)
@@ -47,7 +46,7 @@ class GUI(Tk):
         
         Label(self._mf).grid(row=8)
         
-        Button(self._mf, text="Gerar relatório", command=self.generate_report).grid(column=2, row=9)
+        tkButton(self._mf, text="Gerar relatório", command=self.generate_report).grid(column=2, row=9)
         
     def get_activities_file_name(self):
         filename = filedialog.askopenfilename(initialdir=".",
