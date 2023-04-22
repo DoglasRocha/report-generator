@@ -1,52 +1,50 @@
-from tkinter import Tk, Frame, Label, Entry, filedialog
-from tkinter import Button as tkButton
+from tkinter import Tk, Frame, Entry ,filedialog
+from tkinter import Label as tkLabel
 from button import Button
+from label import Label
 from oop_report_generator import ReportGenerator
 
 class GUI(Tk):
     
     def __init__(self):
+        # create generator and text variables
         self.report_generator = ReportGenerator()
         self._output_dir = ""
         self._output_file_name = ""
         
+        # init and config window
         super().__init__()
         self.title("Gerador de Relatórios")
-        self._mf = Frame(self, padx=10, pady=10, background="#fff")
-        self._mf.pack()
+        mf = Frame(self, padx=10, pady=10, background="#0F0E0E")
+        mf.pack()
         
-        self._label1 = Label(self._mf, text="Arquivo de Atividades: \t")
-        self._label1.grid(column=1, row=1)
+        # First level
+        Label(mf, 1, 2, text="Gerador de Relatório", font=('Arial', '22'))
+        Label(mf, 2, 1) # spacer
         
-        self._button1 = tkButton(self._mf, text="Abrir arquivo de Atividades", command=self.get_activities_file_name)
-        self._button1.grid(column=3, row=1)
+        # Second Level
+        self._label1 = Label(mf, 3, 1, text="Arquivo de Atividades: \t")
+        Button(mf, 3, 3, text="Abrir arquivo de Atividades", command=self.get_activities_file_name)
+        Label(mf, 4, 1) # spacer
         
-        Label(self._mf).grid(row=2)
+        # Third Level
+        self._label2 = Label(mf, 5, 1, text="Abrir arquivo template de relatório: \t")
+        Button(mf, 5, 3, text="Abrir arquivo template de relatório", command=self.get_template_file_name)
+        Label(mf, 6, 1) # spacer
         
-        self._label2 = Label(self._mf, text="Abrir arquivo template de relatório: \t")
-        self._label2.grid(column=1, row=3)
+        # Fourth Level
+        self._label3 = Label(mf, 7, 1, text="Diretório de destino: \t")
+        Button(mf, 7, 3, text="Abrir diretório de destino", command=self.get_output_dir)
+        Label(mf, 8, 1) # spacer
         
-        self._button2 = Button(self._mf, 3, 3, text="Abrir arquivo template de relatório", command=self.get_template_file_name)
+        # Fifth Level
+        self._label4 = Label(mf, 9, 1, text="Nome do relatório gerado: \t")
         
-        Label(self._mf).grid(row=4)
+        self._text1 = Entry(mf, background="#0F0E0E", foreground="#EEEEEE")
+        self._text1.grid(column=3, row=9)
+        Label(mf, 10, 1) # spacer
         
-        self._label3 = Label(self._mf, text="Diretório de destino: \t")
-        self._label3.grid(column=1, row=5)
-        
-        self._button3 = tkButton(self._mf, text="Abrir diretório de destino", command=self.get_output_dir)
-        self._button3.grid(column=3, row=5)
-        
-        Label(self._mf).grid(row=6)
-        
-        self._label4 = Label(self._mf, text="Nome do relatório gerado: \t")
-        self._label4.grid(column=1, row=7)
-        
-        self._text1 = Entry(self._mf)
-        self._text1.grid(column=3, row=7)
-        
-        Label(self._mf).grid(row=8)
-        
-        tkButton(self._mf, text="Gerar relatório", command=self.generate_report).grid(column=2, row=9)
+        Button(mf, 11, 2, text="Gerar relatório", command=self.generate_report)
         
     def get_activities_file_name(self):
         filename = filedialog.askopenfilename(initialdir=".",
