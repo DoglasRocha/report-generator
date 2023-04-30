@@ -2,3 +2,4 @@
 *.docx
 *.xlsx
 _pycache_/
+start*
