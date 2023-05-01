@@ -22,13 +22,13 @@ class GUI(Tk):
         Label(mf, 2, 1) # spacer
         
         # Second Level
-        Label(mf, 3, 1, text="Arquivo de Atividades: \t")
+        Label(mf, 3, 1, text="Planilha de Atividades: \t")
         self._activities_label = Label(mf, 3, 2, text="Nenhum arquivo aberto")
-        Button(mf, 3, 3, text="Abrir arquivo de Atividades", command=self.get_activities_file_name)
+        Button(mf, 3, 3, text="Abrir planilha de Atividades", command=self.get_activities_file_name)
         Label(mf, 4, 1) # spacer
         
         # Third Level
-        Label(mf, 5, 1, text="Abrir arquivo template de relatório: \t")
+        Label(mf, 5, 1, text="Template de relatório: \t")
         self._template_label = Label(mf, 5, 2, text="Nenhum arquivo aberto")
         Button(mf, 5, 3, text="Abrir arquivo template de relatório", command=self.get_template_file_name)
         Label(mf, 6, 1) # spacer
@@ -54,7 +54,7 @@ class GUI(Tk):
         
     def get_activities_file_name(self):
         filename = filedialog.askopenfilename(initialdir=".",
-                                              title="Selecione o arquivo de atividades", 
+                                              title="Selecione a planilha de atividades", 
                                               filetypes=(("Excel files", "*.xlsx"),))
         (
             self

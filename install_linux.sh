@@ -5,9 +5,11 @@ fi
 . ./.venv/bin/activate
 pip install -r requirements.txt
 
+PATH_TO_CURRENT_DIR=$(realpath .)
+
 echo "#!/bin/sh
-. ./.venv/bin/activate
-python python/gui.py" > start.sh
+. $PATH_TO_CURRENT_DIR/.venv/bin/activate
+python $PATH_TO_CURRENT_DIR/python/gui.py" > start.sh
 
 PATH_TO_START=$(realpath start.sh)
 
