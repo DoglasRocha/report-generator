@@ -3,3 +3,4 @@
 *.xlsx
 _pycache_/
 start*
+*.desktop
