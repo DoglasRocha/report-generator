@@ -1,6 +1,8 @@
 .venv/
 *.docx
 *.xlsx
+!template_relatorio.docx
+!template_planilha_atividades.xlsx
 _pycache_/
 start*
 *.desktop
